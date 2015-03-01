@@ -12,11 +12,14 @@ for details on his installation method.  We also use the Debuntu standard /etc/s
 This cookbook creates up to 3 services: clockspeed, taiclockd, and clockspeed_adjust
 
 ## Supported Platforms
-Debian 6+, Ubuntu 14.04 LTS (probably works on older versions, but this is what we test on)
+Debian 6+, Ubuntu 14.04 LTS (probably works on older versions, but this is what I test on.)
 
 ## Dependencies
 
-Depends on the [sv-helper](https://github.com/rubyists/sv-helper) cookbook.
+### Cookbooks
+* build-essential
+* [sv-helper](https://github.com/rubyists/sv-helper)
+
 
 ## Recipes
 | Name | Description |
@@ -33,9 +36,10 @@ Depends on the [sv-helper](https://github.com/rubyists/sv-helper) cookbook.
 |`default[:clockspeed][:clockspeed_enabled]`| `true` | Enable the clockspeed service? |
 |`default[:clockspeed][:clockspeed_adjust_enabled]`| `true` | Enable the clockspeed_adjust service? |
 |`default[:clockspeed][:taiclockd_enabled]`| `true` | Enable the taiclockd service? |
-|`default[:clockspeed][:taiclockd_enabled]`| `true` | Enable the taiclockd service? |
 |`default[:clockspeed][:sv_base]`| `/etc/sv` | Where to place our service definitions |
-|`default[:clockspeed][:sv_base]`| `/etc/service` | Where to link our service definitions to enable |
+|`default[:clockspeed][:service_base]`| `/etc/service` | Where to link our service definitions to enable |
+|`default[:clockspeed][:prefix]`| `/usr/local` | Where to build/install our work |
+|`default[:clockspeed][:djb_base]`| `/usr/local/djb` | Where to build/install djb-classic code |
 
 
 ## Usage
