@@ -1,0 +1,7 @@
+#!/bin/sh
+# clockspeed_adjust/run
+# "run" script for a clockspeed_adjust daemon
+exec 2>&1
+echo "*** Starting clockspeed_adjust..."
+exec setuidgid clocksd ./clock_adjust.sh
+# that's all, folks!

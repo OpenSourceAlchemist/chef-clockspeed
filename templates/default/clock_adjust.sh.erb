@@ -1,0 +1,25 @@
+#!/bin/sh
+# clock_adjust.sh
+# periodically get timing mark for clockspeed service
+#
+# initialize WAIT, WAIT_MAX:
+WAIT=<%= node[:clockspeed][:wait] %>
+WAIT_MAX=<%= node[:clockspeed][:wait_max] %>
+
+# loop indefinitely
+while :
+do
+    echo "Waiting ${WAIT} seconds until next adjustment..."
+    sleep ${WAIT}
+    # obtain timing mark for calibrating clockspeed adjust:
+    clockctl mark
+    # log current "attoseconds":
+    clockctl atto
+    echo "==="
+    # increment $WAIT:
+    WAIT=`expr ${WAIT} + ${WAIT} + ${WAIT}`
+    if [ ${WAIT} -gt ${WAIT_MAX} ] ; then
+        WAIT=${WAIT_MAX}
+    fi
+done
+# that's all, folks!

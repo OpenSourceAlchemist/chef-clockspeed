@@ -1,0 +1,7 @@
+#!/bin/sh
+# taiclockd/run
+# "run" script for a taiclockd daemon
+exec 2>&1
+echo "*** Starting taiclockd..."
+exec setuidgid clocksd /usr/local/clockspeed/bin/taiclockd
+# that's all, folks!
